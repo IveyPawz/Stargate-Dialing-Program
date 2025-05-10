@@ -9,14 +9,25 @@ end
 function toggleIris()
 	local irisState = interface.getIrisProgressPercentage()
     if irisState == 0 then
-        interface.closeIris()
-    else
-        interface.openIris()
+		local result = interface.closeIris()
+if result then
+ print("Iris closed.")
+		else
+			print("Error while closing Iris.")
+		end
+		else
+        		local result = interface.openIris()
+if result then
+ print("Iris opened.")
+		else
+			print("Error while opening Iris.")
+		end
     end
 end
 
 function disconnect()
-interface.disconnectStargate()
+	local result = interface.disconnectStargate()
+if result then
  print("Stargate disconnected")
 else
   print("Error while disconnecting Stargate.")
