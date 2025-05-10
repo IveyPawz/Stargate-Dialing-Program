@@ -48,7 +48,7 @@ function dial(address)
     end
 
     local start = interface.getChevronsEngaged() + 1
-redstone.setOutput("top",true)
+redstone.setOutput("right",true)
     for chevron = start, addressLength, 1 do
         local symbol = address[chevron]
 
