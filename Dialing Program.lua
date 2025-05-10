@@ -48,7 +48,7 @@ function dial(address)
     end
 
     local start = interface.getChevronsEngaged() + 1
-redstone.setOutput("right",true)
+redstone.setOutput("top",true)
     for chevron = start, addressLength, 1 do
         local symbol = address[chevron]
 
@@ -74,7 +74,7 @@ redstone.setOutput("right",true)
         sleep(0.5)
         interface.closeChevron()
         sleep(1)
-        redstone.setOutput("top",false)
+
     end
 end
 
@@ -125,3 +125,27 @@ elseif input == 8 then
         print("Invalid input. Please enter a number.")
     end
 end
+
+function onDisconnect(feedback, description)
+    -- note that description may be nil when basic interface is used!
+    print("Stargate disconnected", feedback, description)
+        redstone.setOutput("top", false)
+end
+
+function onConnect(feedback, description)
+    -- note that description may be nil when basic interface is used!
+    print("Stargate connected", feedback, description)
+        redstone.setOutput("top", true)
+end
+
+while true do
+    local event = {os.pullEvent()}
+    local eventName = event[1]
+    if eventName == "stargate_disconnected" then
+        onDisconnect(table.unpack(event, 2))
+    elseif eventName == "stargate_connected" then
+           onConnect(table.unpack(event, 2))
+    end
+end
+
+
