@@ -113,7 +113,7 @@ elseif input == 5 then
 elseif input == 6 then
     dial(endAddress)
 elseif input == 7 then
-    dial(disconnect)
+    disconnect()
 elseif input == 8 then
     print("Enter desired energy target (in FE):")
     local target = tonumber(io.read())
