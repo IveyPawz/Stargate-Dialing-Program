@@ -48,7 +48,7 @@ function dial(address)
     end
 
     local start = interface.getChevronsEngaged() + 1
-
+redstone.setOutput("top",true)
     for chevron = start, addressLength, 1 do
         local symbol = address[chevron]
 
@@ -74,6 +74,7 @@ function dial(address)
         sleep(0.5)
         interface.closeChevron()
         sleep(1)
+        redstone.setOutput("top",false)
     end
 end
 
