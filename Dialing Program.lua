@@ -28,9 +28,9 @@ end
 function disconnect()
     local result = interface.disconnectStargate()
     if result then
-        print("Stargate disconnected")
+        print("Wormhole disconnected")
     else
-        print("Error while disconnecting Stargate.")
+        print("Error while disconnecting Wormhole.")
     end
 end
 
@@ -93,7 +93,8 @@ print("3 = Lantea")
 print("4 = Nether")
 print("5 = Cavum Tenebrae")
 print("6 = End")
-print("7 = Set Energy Target")
+print("7 = Disconnect Wormhole")
+print("8 = Set Energy Target")
 input = tonumber(io.read())
 sleep(0)
 
@@ -112,6 +113,8 @@ elseif input == 5 then
 elseif input == 6 then
     dial(endAddress)
 elseif input == 7 then
+    dial(disconnect)
+elseif input == 8 then
     print("Enter desired energy target (in FE):")
     local target = tonumber(io.read())
     if target then
@@ -120,6 +123,4 @@ elseif input == 7 then
     else
         print("Invalid input. Please enter a number.")
     end
-	elseif input == "help" then
-print("SetEnergyTarget - Sets FE energy target of the stargate interface.")
 end
